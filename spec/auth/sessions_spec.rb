@@ -1,12 +1,12 @@
-require "rails_helper"
-RSpec.describe "Session", :type => :request do
+require 'rails_helper'
+RSpec.describe 'Session', type: :request do
   before(:each) do
-    @user =  FactoryBot.create(:user) 
-    @login_url = '/auth/sign_in' 
+    @user = FactoryBot.create(:user)
+    @login_url = '/auth/sign_in'
     @logout_url = '/auth/sign_out'
     @params = {
-        email: @user.email,
-        password: @user.password
+      email: @user.email,
+      password: @user.password
     }
   end
   describe 'POST /auth/sign_in' do
@@ -38,7 +38,6 @@ RSpec.describe "Session", :type => :request do
     end
   end
   describe 'DELETE /auth/sign_out' do
-   
     before do
       post @login_url, params: @params, as: :json
       @headers = {
@@ -51,6 +50,5 @@ RSpec.describe "Session", :type => :request do
       delete @logout_url, headers: @headers
       expect(response).to have_http_status(200)
     end
-    
   end
 end

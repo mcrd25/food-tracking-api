@@ -1,10 +1,10 @@
-require "rails_helper"
-RSpec.describe "Registration", :type => :request do
+require 'rails_helper'
+RSpec.describe 'Registration', type: :request do
   before(:each) do
     @url = '/auth/'
     password = Faker::Internet.password
     @params = {
-        email: Faker::Internet.email,
+          email: Faker::Internet.email,
         password: password,
         password_confirmation: password
     }
@@ -27,13 +27,13 @@ RSpec.describe "Registration", :type => :request do
         end
         it 'creates new user' do
           password = Faker::Internet.password
-          expect{
-            post @url, params: { 
+          expect {
+            post @url, params: {
               email: Faker::Internet.email,
               name: Faker::Name.name,
               password: password,
               password_confirmation: password 
-            } 
+            }
          }.to change(User, :count).by(1)
        end
      end
