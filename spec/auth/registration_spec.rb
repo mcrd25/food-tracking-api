@@ -4,9 +4,9 @@ RSpec.describe 'Registration', type: :request do
     @url = '/auth/'
     password = Faker::Internet.password
     @params = {
-          email: Faker::Internet.email,
-        password: password,
-        password_confirmation: password
+      email: Faker::Internet.email,
+      password: password,
+      password_confirmation: password
     }
   end
   describe 'Email registration method' do
@@ -27,17 +27,17 @@ RSpec.describe 'Registration', type: :request do
         end
         it 'creates new user' do
           password = Faker::Internet.password
-          expect {
+          expect do
             post @url, params: {
               email: Faker::Internet.email,
               name: Faker::Name.name,
               password: password,
-              password_confirmation: password 
+              password_confirmation: password
             }
-         }.to change(User, :count).by(1)
-       end
-     end
-     context 'when signup params is invalid' do
+          end.to change(User, :count).by(1)
+        end
+      end
+      context 'when signup params is invalid' do
         before { post @url }
         it 'returns unprocessable entity 422' do
           expect(response.status).to eq 422
