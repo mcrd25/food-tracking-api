@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe MealEntry, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'model relationships' do
+    it { should belong_to(:meal_type) }
+    it { should belong_to(:user) }
+  end
+  describe 'column presence' do 
+    it { should validate_presence_of(:name) }
+  end
 end
