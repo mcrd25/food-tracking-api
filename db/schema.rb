@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_26_131827) do
+ActiveRecord::Schema.define(version: 2020_08_27_204359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "meal_entries", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "meal_type_id", null: false
+    t.string "name", null: false
+    t.string "description"
+    t.integer "calories"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["meal_type_id"], name: "index_meal_entries_on_meal_type_id"
+    t.index ["user_id"], name: "index_meal_entries_on_user_id"
+  end
+
+  create_table "meal_types", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "dsecription"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -45,4 +64,6 @@ ActiveRecord::Schema.define(version: 2020_08_26_131827) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "meal_entries", "meal_types"
+  add_foreign_key "meal_entries", "users"
 end
