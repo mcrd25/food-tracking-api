@@ -33,7 +33,7 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 ### add support directory
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
 ## Added Shoulda matchers configuration
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|

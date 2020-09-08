@@ -1,17 +1,15 @@
 class MealEntriesController < ApplicationController
-  before_action :set_entry, only: [:show, :update, :destroy]
-  before_action authenticate_current_user
+  before_action :set_entry, only: %i[show update destroy]
 
   # GET /meal_entries
   def index
-    @entries = user_signed_in? # current_user.meal_entries
+    @entries = MealEntry.all
     json_response(@entries)
-
   end
 
   # POST /meal_entries
   def create
-    @entry = MealType.create!(meal_entry_params.merge(user_id: current_user.id))
+    @entry = MealType.create!(meal_entry_params.merge(user_id: 1))
     json_response(@entry, :created)
   end
 

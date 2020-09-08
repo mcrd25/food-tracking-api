@@ -1,5 +1,5 @@
 class MealTypesController < ApplicationController
-  before_action :set_meal_type, only: [:show, :update, :destroy]
+  before_action :set_meal_type, only: %i[show update destroy]
 
   # GET /meal_types
   def index
