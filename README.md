@@ -13,7 +13,7 @@ The API is also extensively tested with basic unit tests and each request meant 
 
 ## Live Demo
 
-[Live Demo Link]()
+[Live Demo Link](https://food-tracking-api.herokuapp.com/)
 
 ## Docs
 - [API ENDPOINTS](docs/API_Endpoints.pdf)
@@ -43,8 +43,15 @@ run `rspec` or `bundle exec rspec` to run tests <br>
 run `rails s` or `rails server` to run on development server
 
 ### Deployment
-App deployed on heroku using [create-react-app-buildpack](https://github.com/mars/create-react-app-buildpack) for heroku.
-
+App deployed on heroku.
+Instructions
+- Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
+- Login: `heroku login`
+- Create heroku app `heroku create`
+- Push to heroku master `git push heroku master` if you experience issues try `git push heroku +HEAD:master`
+- Migrate DB: `heroku run rails db:migrate`
+- Run seed files: `heroku run rails db:seed`
+- Open link: `heroku open`
 
 
 ## Authors
