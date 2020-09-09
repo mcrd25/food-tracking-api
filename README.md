@@ -15,6 +15,10 @@ The API is also extensively tested with basic unit tests and each request meant 
 
 [Live Demo Link]()
 
+## Docs
+- [API ENDPOINTS](docs/API_Endpoints.pdf)
+- [ERD DIAGRAM](docs/foodtracker.png)
+
 
 ## Getting Started
 
