@@ -4,7 +4,7 @@ RSpec.describe MealType, type: :model do
   describe 'model relationships' do
     it { should have_many(:meal_entries) }
   end
-  describe 'column presence' do 
+  describe 'column presence' do
     it { should validate_presence_of(:name) }
   end
 end

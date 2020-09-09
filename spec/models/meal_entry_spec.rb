@@ -5,7 +5,7 @@ RSpec.describe MealEntry, type: :model do
     it { should belong_to(:meal_type) }
     it { should belong_to(:user) }
   end
-  describe 'column presence' do 
+  describe 'column presence' do
     it { should validate_presence_of(:name) }
   end
 end

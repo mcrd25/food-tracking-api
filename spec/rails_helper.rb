@@ -31,6 +31,9 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
+### add support directory
+Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
 ## Added Shoulda matchers configuration
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
@@ -62,6 +65,9 @@ RSpec.configure do |config|
       example.run
     end
   end
+
+  config.include RequestSpecHelper
+  config.include ControllerSpecHelper
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
