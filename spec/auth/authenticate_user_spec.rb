@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe AuthenticateUser do
   let(:user) { create(:user) }
   subject(:valid_auth) { described_class.new(user.email, user.password) }
-  subject(:invalid_auth) { described_class.new('user', '123456') }
+  subject(:invalid_auth) { described_class.new('user', '12345') }
 
   describe '#call' do
     context 'when valid credentials' do
@@ -15,10 +15,9 @@ RSpec.describe AuthenticateUser do
 
     context 'when invalid credentials' do
       it 'raises an authentication error' do
-        invalid_call = invalid_auth.call
-        expect{ invalid_auth.call }.to raise_error(
+        expect { invalid_auth.call }.to raise_error(
           ExceptionHandler::AuthenticationError,
-          /Invalid credentials/
+          /Invalid credentials!/
         )
       end
     end

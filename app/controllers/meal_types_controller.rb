@@ -37,6 +37,6 @@ class MealTypesController < ApplicationController
   end
 
   def set_meal_type
-    @meal_type = MealType.find(params[:id])
+    @meal_type = MealType.find_by(id: params[:id])
   end
 end
