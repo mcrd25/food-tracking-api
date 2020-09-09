@@ -34,7 +34,9 @@ run `cd food-tracking-api`
 ### Install
 run `bundle install`
 you may have to run `yarn install --check-files`
-run `rails db:migrate`
+
+run `rails db:migrate` or run `rails db:setup`
+run `rails db:seed` if `rails db:setup` was not run
 
 ### Usage
 run `rspec` or `bundle exec rspec` to run tests <br>
