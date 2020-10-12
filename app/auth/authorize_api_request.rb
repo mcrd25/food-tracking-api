@@ -4,7 +4,14 @@ class AuthorizeApiRequest
   end
 
   def call
-    { user: user }
+    {
+      user:
+      {
+        email: user.email,
+        first_name: user.first_name,
+        last_name: user.last_name
+      }
+    }
   end
 
   private
